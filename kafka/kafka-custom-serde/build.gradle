@@ -1,0 +1,8 @@
+plugins {
+    id 'scala'
+}
+
+
+dependencies {
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: "${apacheKafkaVersion}"
+}

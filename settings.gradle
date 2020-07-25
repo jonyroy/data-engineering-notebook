@@ -1,0 +1,3 @@
+rootProject.name = 'data-engineering-notebook'
+
+include("kafka:kafka-custom-serde")

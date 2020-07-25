@@ -1,0 +1,28 @@
+import org.codehaus.groovy.runtime.GStringImpl
+
+plugins {
+    id 'base'
+    id 'scala'
+}
+
+
+ext {
+    scalaMajorVersion = '2.12'
+    scalaVersion = "${scalaMajorVersion}.11" as GStringImpl
+    apacheKafkaVersion = '2.4.0'
+    scalaTestVersion = '3.1.2'
+    confluentPlatformVersion = '5.4.0'
+}
+
+allprojects {
+    apply plugin: 'scala'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile group: 'org.scala-lang', name: 'scala-library', version: "${scalaVersion}"
+        testCompile "org.scalatest:scalatest_${scalaMajorVersion}:${scalaTestVersion}"
+    }
+}
