@@ -10,6 +10,14 @@ git clone https://github.com/username/repo-name.git
 ``` 
 git add .
 ```
+#### Check Git Status
+``` 
+git status
+```
+#### Check Git Log
+``` 
+git log
+```
 #### Commit
 ```
 git commit -m "write your message for this commit"
@@ -81,4 +89,8 @@ git config --local user.email "email@address"
 #### Set Global Email
 ``` 
 git config --global user.email "email@address"
+```
+#### Configure SSH
+``` 
+git config --local core.sshCommand "ssh -i ~/.ssh/ssh_private_key -F /dev/null"
 ```
