@@ -79,6 +79,11 @@ gcloud compute zones list
 gcloud compute instances start <instance_names> --zone=<zone_name>
 ```
 
+### Stop Google Cloud Instances
+``` 
+gcloud compute instances stop <instance_names> --zone=<zone_name>
+```
+
 Google Cloud Monitoring
 =======================
 ### Inspect Channels Info
