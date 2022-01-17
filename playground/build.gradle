@@ -1,0 +1,11 @@
+plugins {
+    id 'scala'
+}
+
+
+dependencies {
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: "${apacheKafkaVersion}"
+    // https://mvnrepository.com/artifact/org.scalaz/scalaz-core
+    compile group: 'org.scalaz', name: 'scalaz-core_2.12', version: '7.3.2'
+    implementation group: 'com.monovore', name: 'decline_2.12', version: '2.2.0'
+}
