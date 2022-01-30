@@ -2,3 +2,4 @@ rootProject.name = 'data-engineering-notebook'
 
 include("kafka:kafka-custom-serde")
 include("playground")
+include("leetcode")
