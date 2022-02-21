@@ -23,6 +23,8 @@ allprojects {
 
     dependencies {
         compile group: 'org.scala-lang', name: 'scala-library', version: "${scalaVersion}"
+        implementation 'com.typesafe.scala-logging:scala-logging_2.12:3.9.4'
         testCompile "org.scalatest:scalatest_${scalaMajorVersion}:${scalaTestVersion}"
+        testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
     }
 }
