@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 
 class LeetCodeCommonTest extends AnyFlatSpec with Matchers with StrictLogging {
 
-  it should "be able to prepare test data input" in {
+  it should "be able to convert leet code tree input into scala array" in {
     val output = LeetCodeCommon.convertLeetCodeArray(Array[Any](2, null, 3, null, 4, null, 5, null, 6))
     val output1 = LeetCodeCommon.convertLeetCodeArray(Array[Any](null, null, null, null))
     val output2 = LeetCodeCommon.convertLeetCodeArray(Array[Any](1, 2, 3, 4))
@@ -16,9 +16,22 @@ class LeetCodeCommonTest extends AnyFlatSpec with Matchers with StrictLogging {
   }
 
   it should "be able to construct binary tree" in {
-    val input = Array[Any](2, 3, null, null, 4, null, 5, null, 6, null, 7, null, 8, null, 9)
+    val input = Array[Any](2, 3, null, null, 3, null, 4, null, 5, null, 6, null, 7, null, 8, null, 9)
     val output = LeetCodeCommon.lcBinaryTree(input)
-    println(output)
+    output should be(
+      TreeNode(
+        2,
+        TreeNode(
+          3,
+          null,
+          TreeNode(
+            3,
+            null,
+            TreeNode(
+              4,
+              null,
+              TreeNode(5, null, TreeNode(6, null, TreeNode(7, null, TreeNode(8, null, TreeNode(9, null, null)))))))),
+        null))
   }
 
 }
