@@ -6,18 +6,24 @@ case class TreeNode(value: Int, var left: TreeNode, var right: TreeNode)
 object LeetCodeCommon {
 
   def constructBinaryTree(arr: Array[Option[Int]], currentIndex: Int, numOfNodes: Int): TreeNode = {
-    if (currentIndex < numOfNodes) {
-      if (arr(currentIndex).isEmpty) {
-        null
-      } else {
-        val tree = TreeNode(arr(currentIndex).get, null, null)
-        tree.left = constructBinaryTree(arr, 2 * currentIndex + 1, numOfNodes)
-        tree.right = constructBinaryTree(arr, 2 * currentIndex + 2, numOfNodes)
-        tree
-      }
-    } else {
-      null
+    if (currentIndex >= numOfNodes || arr(currentIndex).isEmpty) return null
+    var counter = 0
+    for (item ← 0 to currentIndex) {
+      if (arr(item).isEmpty) counter += 1
     }
+    val childrenIndex = 2 * (currentIndex - counter)
+    val left = constructBinaryTree(arr, childrenIndex + 1, numOfNodes)
+    val right = constructBinaryTree(arr, childrenIndex + 2, numOfNodes)
+    TreeNode(arr(currentIndex).get, left, right)
+  }
+
+  def lcBinaryTree(lcInput: Array[Any]): TreeNode = {
+    val input: Array[Option[Int]] = convertLeetCodeArray(lcInput)
+    constructBinaryTree(input, 0, lcInput.length)
+  }
+
+  def convertLeetCodeArray(arr: Array[Any]): Array[Option[Int]] = {
+    arr.map(elem => if (elem == null) None else Option(elem.asInstanceOf[Int]))
   }
 
   def convertTreeToArray(root: TreeNode): Array[Option[Int]] = {

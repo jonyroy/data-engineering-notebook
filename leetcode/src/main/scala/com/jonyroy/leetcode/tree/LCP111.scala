@@ -15,15 +15,10 @@ import com.jonyroy.leetcode.common.TreeNode
 object LCP111 {
 
   def minDepth(root: TreeNode): Int = {
-
-    def _minDepth(root: TreeNode, depth: Int): Int = {
-      if (root == null) return depth - 1
-      if (root.left == null) _minDepth(root.right, depth + 1) else 0
-      val leftDepth = _minDepth(root.left, depth + 1)
-      val rightDepth = _minDepth(root.right, depth + 1)
-      scala.math.min(leftDepth, rightDepth)
-    }
-
-    _minDepth(root, 1)
+    if(root == null) return 0
+    val leftDepth = minDepth(root.left)
+    val rightDepth = minDepth(root.right)
+    if (leftDepth == 0 || rightDepth == 0) leftDepth + rightDepth + 1
+    else scala.math.min(leftDepth, rightDepth) + 1
   }
 }
