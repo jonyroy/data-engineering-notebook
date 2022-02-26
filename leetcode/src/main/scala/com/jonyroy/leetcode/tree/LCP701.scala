@@ -1,8 +1,6 @@
-package com.jonyroy.leetcode
+package com.jonyroy.leetcode.tree
 
 import com.jonyroy.leetcode.common.TreeNode
-
-import scala.collection.immutable.TreeMap
 
 /**
  * Definition for a binary tree node.
@@ -14,7 +12,7 @@ import scala.collection.immutable.TreeMap
  *
  * https://leetcode.com/problems/insert-into-a-binary-search-tree/
  */
-object Problem701 {
+object LCP701 {
   def insertIntoBST(root: TreeNode, `val`: Int): TreeNode = {
     if (root == null) {
       return TreeNode(`val`, null, null)

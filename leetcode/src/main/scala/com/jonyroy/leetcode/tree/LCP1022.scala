@@ -1,8 +1,6 @@
-package com.jonyroy.leetcode
+package com.jonyroy.leetcode.tree
 
 import com.jonyroy.leetcode.common.TreeNode
-
-import scala.annotation.tailrec
 
 /**
  * Definition for a binary tree node.
@@ -14,22 +12,22 @@ import scala.annotation.tailrec
  *
  * https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
  */
-object Problem1022 {
+object LCP1022 {
 
   def sumRootToLeaf(root: TreeNode): Int = {
 
     def _sumRootToLeaf(root: TreeNode, path: List[Int]): Int = {
-      if(root != null && root.left == null && root.right == null) {
+      if (root != null && root.left == null && root.right == null) {
         return binaryToDecimal(root.value :: path)
       }
 
-      if(root == null) return 0
+      if (root == null) return 0
 
       _sumRootToLeaf(root.left, root.value :: path) + _sumRootToLeaf(root.right, root.value :: path)
     }
 
     def binaryToDecimal(path: List[Int]): Int = {
-      path.zipWithIndex.map { case (item, index) ⇒ scala.math.pow(2, index) * item}.sum.toInt
+      path.zipWithIndex.map { case (item, index) => scala.math.pow(2, index) * item }.sum.toInt
     }
 
     _sumRootToLeaf(root, List[Int]())

@@ -1,4 +1,4 @@
-package com.jonyroy.leetcode
+package com.jonyroy.leetcode.tree
 
 import com.jonyroy.leetcode.common.TreeNode
 
@@ -12,7 +12,6 @@ import com.jonyroy.leetcode.common.TreeNode
  *
  * https://leetcode.com/problems/increasing-order-search-tree/
  */
-
-object Problem897 {
+object LCP897 {
   def increasingBST(root: TreeNode): TreeNode = ???
 }

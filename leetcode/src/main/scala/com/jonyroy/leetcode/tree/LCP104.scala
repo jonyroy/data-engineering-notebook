@@ -1,4 +1,4 @@
-package com.jonyroy.leetcode
+package com.jonyroy.leetcode.tree
 
 import com.jonyroy.leetcode.common.TreeNode
 
@@ -12,15 +12,13 @@ import com.jonyroy.leetcode.common.TreeNode
  *
  * https://leetcode.com/problems/maximum-depth-of-binary-tree/
  */
-
-object Problem104 {
+object LCP104 {
   def maxDepth(root: TreeNode): Int = {
 
     def _maxDepth(root: TreeNode, depth: Int): Int = {
-      if (root == null && depth == 1) return 0
-      else if(root == null) return depth
-      val leftDepth = if(root.left != null) _maxDepth(root.left, depth + 1) else depth
-      val rightDepth = if(root.right != null) _maxDepth(root.right, depth + 1) else depth
+      if (root == null) return depth - 1
+      val leftDepth = _maxDepth(root.left, depth + 1)
+      val rightDepth = _maxDepth(root.right, depth + 1)
       scala.math.max(leftDepth, rightDepth)
     }
 

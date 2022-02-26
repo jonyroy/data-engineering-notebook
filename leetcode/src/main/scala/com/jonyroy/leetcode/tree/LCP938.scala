@@ -1,4 +1,4 @@
-package com.jonyroy.leetcode
+package com.jonyroy.leetcode.tree
 
 import com.jonyroy.leetcode.common.TreeNode
 
@@ -9,8 +9,10 @@ import com.jonyroy.leetcode.common.TreeNode
  *   var left: TreeNode = _left
  *   var right: TreeNode = _right
  * }
+ *
+ * https://leetcode.com/problems/range-sum-of-bst/
  */
-object Problem938 {
+object LCP938 {
   def rangeSumBST(root: TreeNode, low: Int, high: Int): Int = {
     def evaluateRangeSum(root: TreeNode): Int = {
       if (root == null) return 0
