@@ -1,6 +1,5 @@
 package com.jonyroy.leetcode.common
 
-case class Tree(value: Int, var left: Option[Tree], var right: Option[Tree])
 case class TreeNode(value: Int, var left: TreeNode, var right: TreeNode)
 
 object LeetCodeCommon {
@@ -8,7 +7,7 @@ object LeetCodeCommon {
   def constructBinaryTree(arr: Array[Option[Int]], currentIndex: Int, numOfNodes: Int): TreeNode = {
     if (currentIndex >= numOfNodes || arr(currentIndex).isEmpty) return null
     var counter = 0
-    for (item ← 0 to currentIndex) {
+    for (item <- 0 to currentIndex) {
       if (arr(item).isEmpty) counter += 1
     }
     val childrenIndex = 2 * (currentIndex - counter)
