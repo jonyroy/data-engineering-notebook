@@ -14,7 +14,6 @@ object LevelOrderTraversal {
     q.enqueue(root)
     while (q.nonEmpty) {
       val qSize = q.size
-
       val acc = ArrayBuffer[Int]()
       for (_ <- 0 until qSize) {
         val currentNode = q.dequeue()
@@ -24,7 +23,6 @@ object LevelOrderTraversal {
       }
       levelNodes += acc
     }
-
     levelNodes
   }
 
