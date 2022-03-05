@@ -20,35 +20,16 @@ object LCP1609 {
     var isLevelEven: Boolean = true
 
     while (q.nonEmpty) {
-      val levelNodes = scala.collection.mutable.ArrayBuffer[Int]()
       val qSize = q.size
+      var preVal = if (isLevelEven) Integer.MIN_VALUE else Integer.MAX_VALUE
       for (_ <- 0 until qSize) {
         val node = q.dequeue()
-        levelNodes += node.value
+        if (isLevelEven && (node.value % 2 == 0 || node.value <= preVal)) return false
+        if (!isLevelEven && (node.value % 2 == 1 || node.value >= preVal)) return false
+        preVal = node.value
         if (node.left != null) q.enqueue(node.left)
         if (node.right != null) q.enqueue(node.right)
       }
-
-      val levelNodeSize = levelNodes.size
-
-      if (isLevelEven) {
-        if (levelNodeSize == 1 && levelNodes(0) % 2 == 0) {
-          return false
-        }
-        val isIncreasing = (1 until levelNodeSize).forall { elm =>
-          levelNodes(elm - 1) % 2 == 1 && levelNodes(elm) % 2 == 1 && levelNodes(elm - 1) < levelNodes(elm)
-        }
-        if (!isIncreasing) return false
-      } else {
-        if (levelNodeSize == 1 && levelNodes(0) % 2 == 1) {
-          return false
-        }
-        val isDecreasing = (1 until levelNodeSize).forall { elm =>
-          levelNodes(elm - 1) % 2 == 0 && levelNodes(elm) % 2 == 0 && levelNodes(elm - 1) > levelNodes(elm)
-        }
-        if (!isDecreasing) return false
-      }
-
       isLevelEven = !isLevelEven
     }
     true
