@@ -1,6 +1,6 @@
 package com.jonyroy.leetcode.common
 
-case class TreeNode(value: Int, var left: TreeNode, var right: TreeNode)
+case class TreeNode(var value: Int, var left: TreeNode, var right: TreeNode)
 
 case class ListNode(var x: Int, var next: ListNode)
 
