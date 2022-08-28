@@ -1,25 +1,26 @@
 package com.jonyroy.leetcode.common
 
-case class Tree(value: Int, var left: Option[Tree], var right: Option[Tree])
-case class TreeNode(value: Int, var left: TreeNode, var right: TreeNode)
+case class TreeNode(var value: Int, var left: TreeNode, var right: TreeNode)
+
+case class ListNode(var x: Int, var next: ListNode)
 
 object LeetCodeCommon {
 
-  def constructBinaryTree(arr: Array[Option[Int]], currentIndex: Int, numOfNodes: Int): TreeNode = {
+  def buildBinaryTree(arr: Array[Option[Int]], currentIndex: Int, numOfNodes: Int): TreeNode = {
     if (currentIndex >= numOfNodes || arr(currentIndex).isEmpty) return null
     var counter = 0
-    for (item ← 0 to currentIndex) {
+    for (item <- 0 to currentIndex) {
       if (arr(item).isEmpty) counter += 1
     }
     val childrenIndex = 2 * (currentIndex - counter)
-    val left = constructBinaryTree(arr, childrenIndex + 1, numOfNodes)
-    val right = constructBinaryTree(arr, childrenIndex + 2, numOfNodes)
+    val left = buildBinaryTree(arr, childrenIndex + 1, numOfNodes)
+    val right = buildBinaryTree(arr, childrenIndex + 2, numOfNodes)
     TreeNode(arr(currentIndex).get, left, right)
   }
 
   def lcBinaryTree(lcInput: Array[Any]): TreeNode = {
     val input: Array[Option[Int]] = convertLeetCodeArray(lcInput)
-    constructBinaryTree(input, 0, lcInput.length)
+    buildBinaryTree(input, 0, lcInput.length)
   }
 
   def convertLeetCodeArray(arr: Array[Any]): Array[Option[Int]] = {
